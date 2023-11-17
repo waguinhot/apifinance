@@ -43,7 +43,7 @@ class InvestimentoController extends Controller
                 'valor' => ['required'],
             ])
         );
-
+//teste pull request
         return response(json_encode($data), 201);
     }
 }
