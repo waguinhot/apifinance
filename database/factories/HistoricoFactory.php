@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Investimento;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class HistoricoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_investimento' => Investimento::factory(), 
+            'value' => fake()->numerify('##.##')
         ];
     }
 }

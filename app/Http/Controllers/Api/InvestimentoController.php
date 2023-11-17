@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class InvestimentoController extends Controller
 {
    public function index(){
-    $investimentos = Investimento::all();
+    $investimentos = Investimento::paginate(4);
 
     return response(json_encode($investimentos) , 200);
    }
