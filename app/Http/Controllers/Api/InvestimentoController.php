@@ -26,7 +26,6 @@ class InvestimentoController extends Controller
             $request->validate([
                 'name' => ['required'],
                 'valor' => ['required'],
-                'adicional' => ['required']
             ])
         );
 

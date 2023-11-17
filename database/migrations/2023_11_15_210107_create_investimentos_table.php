@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('valor');
-            $table->double('adicional');
+            $table->double('adicional')->default(0);
             $table->date('date')->default(now());
             $table->double('total');
             $table->timestamps();
