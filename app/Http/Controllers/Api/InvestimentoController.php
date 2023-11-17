@@ -8,19 +8,34 @@ use Illuminate\Http\Request;
 
 class InvestimentoController extends Controller
 {
-   public function index(){
-    $investimentos = Investimento::paginate(4);
+    public function index(Request $request )
+    {   
+        $investimentos = [];
 
-    return response(json_encode($investimentos) , 200);
-   }
+        if($request->query('search'))
+        {   
+            $search = $request->query('search');
+            $investimentos = Investimento::where('name' , 'like' , '%'.$search.'%')->paginate(4);
+        }
+        else{
+            $investimentos = Investimento::paginate(4);
+        }
 
-   public function getInvestimento(int $id){
-    $investimento = Investimento::find($id);
-    return response(json_encode($investimento) , 200);
-   }
+      
 
-   
-   public function store(Request $request){
+        return response(json_encode($investimentos), 200);
+    }
+
+    public function getInvestimento( int $id)
+    {   
+        
+        $investimento = Investimento::find($id);
+        return response(json_encode($investimento), 200);
+    }
+
+
+    public function store(Request $request)
+    {
 
         $data = Investimento::create(
             $request->validate([
@@ -29,6 +44,6 @@ class InvestimentoController extends Controller
             ])
         );
 
-        return response(json_encode($data) , 201);
-   }
+        return response(json_encode($data), 201);
+    }
 }
